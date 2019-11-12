@@ -9,7 +9,7 @@ constituents from yahoo.finance
 """
 # Code found on 
 #https://pythonprogramming.net/sp500-company-price-data-python-programming-for-finance/?completed=/sp500-company-list-python-programming-for-finance/
-
+# Code adapted to be used for required data download.
 
 # Import packages
 import bs4 as bs
