@@ -2,14 +2,15 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed Oct 30 14:17:33 2019
-This file is to download crypto currency data with the bitfinex API
+This file is to download crypto currency data with the bitfinex API.
+Found on https://blog.patricktriest.com/analyzing-cryptocurrencies-python/,
+Code slightly adapted in order to download the wanted crypto prices
 @author: julianwossner
+@date: 20191117
 """
 
-# Get crypto Data
-# Found on https://blog.patricktriest.com/analyzing-cryptocurrencies-python/,
-# Code slightly adapted in order to download the wanted crypto prices
 
+# In[1]:
 # Import required packages
 import os
 import numpy as np
@@ -24,7 +25,11 @@ import plotly.graph_objs as go
 import plotly.figure_factory as ff
 py.init_notebook_mode(connected = True)
 
+
+
+# In[2]:
 # Define Quandl Helper Function
+
 def get_quandl_data(quandl_id):
     '''Download and cache Quandl dataseries'''
     cache_path = '{}.pkl'.format(quandl_id).replace('/','-')
@@ -44,6 +49,9 @@ btc_usd_datasets = get_quandl_data('BCHARTS/KRAKENUSD')
 
 btc_usd_datasets = btc_usd_datasets["Close"]
 
+
+
+# In[3]:
 # Define Function to merge columns into dataframe
 def merge_dfs_on_column(dataframes, labels, col):
     '''Merge a single column of each dataframe into a new combined dataframe'''
@@ -54,8 +62,9 @@ def merge_dfs_on_column(dataframes, labels, col):
     return pd.DataFrame(series_dict)
 
 
-# Define json data Helper Function
 
+# In[4]:
+# Define json data Helper Function
 def get_json_data(json_url, cache_path):
     '''Download and cache JSON data, return as a dataframe.'''
     try:        
@@ -69,6 +78,11 @@ def get_json_data(json_url, cache_path):
         print('Cached {} at {}'.format(json_url, cache_path))
     return df
 
+
+
+# In[5]:
+# Parse crypto data and save to csv
+    
 base_polo_url = 'https://poloniex.com/public?command=returnChartData&currencyPair={}&start={}&end={}&period={}'
 start_date = time.mktime(datetime(2015,1,1).timetuple()) # get data from the start of 2015 in seconds
 end_date = time.mktime(datetime(2019,10,30).timetuple()) # up until today
@@ -103,3 +117,6 @@ combined_df['BTC'] = btc_usd_datasets
 # Save as .csv file
 combined_df.to_csv("crypto_prices.csv")
 
+
+
+# In[ ]
