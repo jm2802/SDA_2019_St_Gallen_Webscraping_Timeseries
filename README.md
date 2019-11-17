@@ -12,6 +12,6 @@ Author: 'Julian Woessner'
 
 See also: 'SDA_2019_St_Gallen_Hierarchical_Risk_Parity'
 
-Submitted:  '13 November 2019'
+Submitted:  '17 November 2019'
 
 Output:  'crypto_prices.csv, SP500_price_data_00.csv, SP500_price_data_15.csv, sp500tickers.pickle'
